@@ -1,0 +1,16 @@
+==================================
+ARCHITECTURE
+==================================
+|-> index
+    (Call to the API)
+    (Bootstrap)
+    (include.js)
+    (styles.css)
+    |-> app
+        |-> movie-card 
+            |-> movie-details
+
+==================================
+NOTES
+==================================
+POSTER-PROPORTION: 500px x 748.1px

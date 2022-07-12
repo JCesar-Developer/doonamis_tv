@@ -1,0 +1,183 @@
+<style>
+    #btnsContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #btnsContainer #btnPrev,
+    #btnsContainer #btnNext {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: scale(1.05);
+        margin: 10px;
+        padding: 5px 10px;
+        padding-bottom: 8px;
+        border-radius: 20px;
+        background: var(--darkhighlighted-color);
+        color: var(--soft-font-color);
+    }
+    #btnsContainer .btn-number button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: scale(.85);
+        margin: 5px;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 50%;
+        background: var(--darkhighlighted-color);
+    }
+    #btnsContainer .btn-number .btn-active {
+        transform: scale(.95);
+        border: solid 1px white;
+        background: var(--highlighted-color);
+        color: var(--darkhighlighted-color);
+        font-weight: 800;
+    }
+    #btnsContainer button:hover,
+    #btnsContainer #btnPrev:hover,
+    #btnsContainer #btnNext:hover {
+        transform: scale(1.075);
+        transition: .4s ease all;
+        background: var(--highlighted-color);
+    }
+</style>
+
+<div id="btnsContainer" class="container">
+    <button id="btnPrev" class="paragraph">&lt;&lt; prev</button>
+        <div id="btn1" class="btn-number"><button id="btn-1" class="paragraph btn-active">1</button></div>
+        <div id="btn2" class="btn-number"><button id="btn-2" class="paragraph">2</button></div>
+        <div id="btn3" class="btn-number"><button id="btn-3" class="paragraph">3</button></div>
+    <button id="btnNext" class="paragraph">next &gt;&gt;</button>
+</div>
+
+<script>
+    let x = 1;
+    let y = 2;
+    let z = 3;
+    let prev = document.getElementById('btnPrev');
+    let btn1 = document.getElementById('btn1');
+    let btn2 = document.getElementById('btn2');
+    let btn3 = document.getElementById('btn3');
+    let next = document.getElementById('btnNext');
+    let btnActive = document.getElementsByClassName('btn-active')[0];
+
+    /**
+     * 
+     */
+    const handleChangeBtnNumbers = () => {
+        btn1.innerHTML = (`<button id="btn-${x}" class="paragraph">${x}</button>`);
+        btn2.innerHTML = (`<button id="btn-${y}" class="paragraph">${y}</button>`);
+        btn3.innerHTML = (`<button id="btn-${z}" class="paragraph">${z}</button>`);
+    }
+
+    /**
+     * 
+     */
+    next.addEventListener('click', () => {
+        x++;
+        y++;
+        z++;
+        handleChangeBtnNumbers();
+        printBtnActive(btnActive);
+    })
+
+    /**
+     * 
+     */
+     btn1.addEventListener('click', () => {
+        const btnToPrint = onSaveBtnToPrint(btn1.firstChild);
+        if( x > 1 && z < 1000) {
+            x--;
+            y--;
+            z--;
+            handleChangeBtnNumbers();
+        }
+        printBtnSelected(btnToPrint);
+        changePage(btnToPrint);
+    })
+
+    /**
+     * 
+     */
+     btn2.addEventListener('click', () => {
+        const btnToPrint = onSaveBtnToPrint(btn2.firstChild);
+        handleChangeBtnNumbers();
+        printBtnSelected(btnToPrint);
+        changePage(btnToPrint);
+    })
+
+    /**
+     * 
+     */
+    btn3.addEventListener('click', () => {
+        const btnToPrint = onSaveBtnToPrint(btn3.firstChild);
+        x++;
+        y++;
+        z++;
+        handleChangeBtnNumbers();
+        printBtnSelected(btnToPrint);
+        changePage(btnToPrint);
+    })
+
+    /**
+     * 
+     */
+    prev.addEventListener('click', () => {
+        if( x > 1 && z < 1000) {
+            x--;
+            y--;
+            z--;
+            handleChangeBtnNumbers();
+        }
+        printBtnActive(btnActive);
+    })
+
+    /**
+     * 
+     */
+    const onSaveBtnToPrint = (btnSelected) => {
+        const btnToPrint = document.getElementById(btnSelected.id);
+        return btnToPrint;
+    }    
+
+    /**
+     * 
+     */
+    const printBtnActive = (btnActive) => {
+        const btnActiveId = btnActive.id;
+        if( btnActiveId == 'btn-' + x ) 
+            printBtnSelected(btn1.children[0]);  
+        if( btnActiveId == 'btn-' + y ) 
+            printBtnSelected(btn2.children[0]);  
+        if( btnActiveId == 'btn-' + z ) 
+            printBtnSelected(btn3.children[0]);
+    }    
+
+    /**
+     * 
+     */
+    const printBtnSelected = (btnToPrint) => {
+        if ( document.getElementsByClassName('btn-active')[0] ) {
+            const currentBtnActive = document.getElementsByClassName('btn-active')[0];
+            currentBtnActive.classList.remove('btn-active');
+        }
+        const newBtnSelected = document.getElementById(btnToPrint.id);
+        newBtnSelected.classList.add('btn-active');
+        btnActive = newBtnSelected;
+    }    
+
+    const changePage = ( btnPressed ) => {
+        const hero = document.getElementById('movieDetails');
+        const cardsContainer = document.getElementById('movieCardsContainer');
+
+        page = btnPressed.textContent;
+        console.log(hero);
+        console.log(cardsContainer);
+
+        hero.innerHTML;
+        cardsContainer.innerHTML;
+    }
+
+</script>

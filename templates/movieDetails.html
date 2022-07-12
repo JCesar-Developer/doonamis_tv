@@ -1,0 +1,109 @@
+<!-- ------------------------ STYLES ------------------------ -->
+
+<style>
+    .hero-container {
+        width: 100%;
+        margin-bottom: 40px;
+        position: relative;
+    }
+    .img-container {
+        width: 65%;
+        display: block;
+    }
+    #hero-details {
+        position: absolute;
+        width: 45%;
+        top: 5%;
+        left: 2.5%;
+        z-index: 9;
+    }
+    #hero-img {
+        width: 100%;
+    }
+    #img-size {
+        width: 100%;
+        height: auto;
+        filter: opacity(0);
+    }
+</style>
+
+<!-- ----------------------- COMPONENT ----------------------- -->
+
+<div class="hero-container d-flex justify-content-end">
+    <!-- HERO-DETAILS -->
+    <div id="hero-details">
+        <h1 id="hero-title" class="title">Title</h1>
+        <h3 id="hero_overview" class="paragraph">Overview</h3>
+    </div>
+
+    <!-- HERO-IMG -->
+    <div class="img-container">
+        <div id="hero-img">
+            <img id="img-size" 
+                src="https://image.tmdb.org/t/p/w500/56v2KjBlU4XaOv9rVYEQypROD7P.jpg"> 
+        </div>
+    </div>
+</div>
+
+<!-- ----------------------- FUNCTIONS ---------------------- -->
+
+<script>
+const handleChooseFirstMovieToShow = async () => {
+    const randomNumber = Math.floor(Math.random() * 20);
+
+    await fetch(`${api_url}`)
+    .then((response) => response.json())
+    .then((apiResult) => {
+        const randomIndex = apiResult.results[randomNumber].id ;
+        firstMovieToShow = `https://api.themoviedb.org/3/tv/${randomIndex}?api_key=${api_key}&language=en-US`;
+    })
+
+    initHero();
+}
+
+const initHero = () => {
+    fetch(firstMovieToShow) 
+    .then((response) => response.json())
+    .then((apiResult) => {
+        
+        movieSelected = apiResult;
+
+        //RENDERING HERO-DETAILS
+        handleChangeHeroDetails();
+        //RENDERING HERO-IMG
+        handleSetHeroImg();    
+    })
+}
+
+const handleSetHeroImg = () => {
+    const hero_img = document.querySelector('#movieDetails #hero-img')
+    hero_img.setAttribute('style', `
+    background-image: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6612529002320185) 10%, rgba(0,0,0,0.3364269141531323) 20%, rgba(255,255,255,0) 30%, rgba(255,255,255,0) 100%), 
+                      url(${api_img + movieSelected.backdrop_path});
+                      background-repeat: no-repeat; background-size: cover;`);
+}
+
+handleChooseFirstMovieToShow();
+</script>
+
+
+<!--
+// const handleRenderHeroDetails = () => {
+//     const hero_details  = document.querySelector('#movieDetails #hero-details');
+//     //TITLE ELEMENT
+//     const hero_title    = document.createElement('h1');
+//     hero_title.setAttribute('id', 'hero-title');
+//     hero_title.setAttribute('class', 'title');
+//     hero_title.appendChild(document.createTextNode(movieSelected.name));
+
+//     //OVERVIEW ELEMET
+//     const hero_overview = document.createElement('h3');
+//     hero_overview.setAttribute('id', 'hero_overview');
+//     hero_overview.setAttribute('class', 'paragraph');
+//     hero_overview.appendChild(document.createTextNode(movieSelected.overview));
+
+//     //APPEND-CHILD
+//     hero_details.appendChild(hero_title);
+//     hero_details.appendChild(hero_overview);
+// } 
+-->

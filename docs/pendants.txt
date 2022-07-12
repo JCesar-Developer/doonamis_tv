@@ -1,0 +1,29 @@
+==================================
+PENDIENTES
+==================================
+- Diferencia entre templates y components.
+- Solucionar la falta de foto al hacer click
+- Agregar todos los detalles al HERO seleccionado.
+- Desarrollar el empaginado.
+- Carrucel con las tarjetas de las películas.
+
+- reducir espaciados entre componentes.
+- Terminar diseño UI/UX.
+- Terminar Responsive.
+- Documentar funcionalidades.
+- Entregar.
+
+==================================
+DESCARTADO
+==================================
+- Todos las tarjetas del grid con el mismo alto / ancho.
+
+==================================
+DOCUMENTACIÓN
+==================================
+- Api desencriptada: https://api.themoviedb.org/3/tv/popular?api_key=c6aeee577586ba38e487b74dfede5deb&language=en-US&page=1 
+- Ejemplo de referencia: https://miro.medium.com/max/1400/1*yry6a72x_azssmRBYcxaVA.jpeg
+- Colores de referencia: https://www.crehana.com/blog/diseno-grafico/cmyk-color-dorado/ 
+- Unidades de proporción (rem - em): https://www.youtube.com/watch?v=p_DVRE4uZgw
+- Como crear un carrusel: https://www.youtube.com/watch?v=fNx_ELbe1Vc 
+- Cambiar de página con botones de selección: https://www.youtube.com/watch?v=voy1K8l09fA 
