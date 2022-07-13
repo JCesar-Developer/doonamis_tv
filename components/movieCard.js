@@ -69,26 +69,40 @@ class movieCard extends HTMLElement {
     
 }
 
-const handleShowMovieCards = () => {
+/**
+ * Destroy and re-render the content of movie cards.
+ */
+const reRenderCards = () => {
+    const movieCardsContainer = document.querySelector('#movieCardsContainer');
+    movieCardsContainer.innerHTML = '';
+    handleShowMovieCards();
+}
+
+/**
+ * Fetch the DATA from the URL of a specific page from the API (TMDB) 
+ * to get the data of all the movies stored on that page. 
+ * Finally creates a MOVIE-CARD component for each film obtained.
+ */
+const handleShowMovieCards = async () => {
     const movieCardsContainer = document.querySelector('#movieCardsContainer');
 
-    fetch(`${api_url}`)
+    await fetch(`${api_url}`)
     .then((response) => response.json())
     .then((apiResult) => {
-        const tvShows = apiResult.results;
-        tvShows.forEach((tvShow) => {         
+        const movies = apiResult.results;
+        movies.forEach((movie) => {         
 
-            const tvShowId = tvShow.id;
+            const movieID = movie.id;
             const newMovieCard = document.createElement("movie-card");
             
-            newMovieCard.setAttribute('id', tvShowId);
+            newMovieCard.setAttribute('id', movieID);
             newMovieCard.setAttribute('class', 'movieCard col');
             newMovieCard.setAttribute('style', 'padding-left: 10px; padding-right: 10px;')
-            newMovieCard.setAttribute('name', tvShow.name);
-            newMovieCard.setAttribute('img_path', tvShow.backdrop_path);
-            newMovieCard.setAttribute('poster_img_path', tvShow.poster_path);
+            newMovieCard.setAttribute('name', movie.name);
+            newMovieCard.setAttribute('img_path', movie.backdrop_path);
+            newMovieCard.setAttribute('poster_img_path', movie.poster_path);
 
-            newMovieCard.setAttribute('onclick', `handleShowSelectedMovie(${tvShowId})`);
+            newMovieCard.setAttribute('onclick', `handleShowDetailsOfSelectedMovie(${movieID})`);
 
             movieCardsContainer.appendChild(newMovieCard);
 
@@ -96,35 +110,35 @@ const handleShowMovieCards = () => {
     })
 }
 
-const handleShowSelectedMovie = (tvShowSelected) => {
-    const api_details_url = `https://api.themoviedb.org/3/tv/${tvShowSelected}?api_key=${api_key}&language=en-US`;
+/**
+ * Fetch the details from a specific SELECTED movie 
+ * to render them into the web hero.
+ * @param requires the ID of the specific movie 
+ */
+const handleShowDetailsOfSelectedMovie = ( ID_movieSelected ) => {
+    const api_details_url = `https://api.themoviedb.org/3/tv/${ID_movieSelected}?api_key=${api_key}&language=en-US`;
 
     fetch(api_details_url)
     .then((response) => response.json())
     .then((apiResult) => {
 
-        movieSelected = apiResult;
-        console.log(movieSelected);
-
-        //CHANGING HERO-DETAILS
-        handleChangeHeroDetails();
+        movieSelectedData = apiResult;
         //CHANGING HERO-IMG
-        handleChangeHeroImg();
+        handleChangeHeroImg( movieSelectedData );
+        //CHANGING HERO-DETAILS
+        handleSetHeroDetails( movieSelectedData );
     })
 }
 
-const handleChangeHeroDetails = () => {
-    const hero_title    = document.querySelector('#movieDetails #hero-details h1');
-    hero_title.textContent = movieSelected.name;
-    const hero_overview = document.querySelector('#movieDetails #hero-details h3');
-    hero_overview.textContent = movieSelected.overview;
-}
-
-const handleChangeHeroImg = () => {
+/**
+ * Changes the hero image for the image from a specific SELECTED movie.
+ * @param requires the DATA of the specific movie. 
+ */
+const handleChangeHeroImg = ( movieSelectedData ) => {
     const hero_img = document.querySelector('#movieDetails #hero-img')
     hero_img.style = `
     background-image: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6612529002320185) 10%, rgba(0,0,0,0.3364269141531323) 20%, rgba(255,255,255,0) 30%, rgba(255,255,255,0) 100%), 
-                      url(${api_img + movieSelected.backdrop_path});
+                      url(${api_img + movieSelectedData.backdrop_path});
                       background-repeat: no-repeat; background-size: cover;`
 }
 

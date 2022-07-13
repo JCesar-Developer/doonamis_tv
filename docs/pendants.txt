@@ -1,7 +1,6 @@
 ==================================
 PENDIENTES
 ==================================
-- Diferencia entre templates y components.
 - Solucionar la falta de foto al hacer click
 - Agregar todos los detalles al HERO seleccionado.
 - Desarrollar el empaginado.
@@ -27,3 +26,8 @@ DOCUMENTACIÓN
 - Unidades de proporción (rem - em): https://www.youtube.com/watch?v=p_DVRE4uZgw
 - Como crear un carrusel: https://www.youtube.com/watch?v=fNx_ELbe1Vc 
 - Cambiar de página con botones de selección: https://www.youtube.com/watch?v=voy1K8l09fA 
+
+==================================
+NOTES
+==================================
+POSTER-PROPORTION: 500px x 748.1px

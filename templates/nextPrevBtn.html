@@ -1,3 +1,5 @@
+<!-- ------------------------ STYLES ------------------------ -->
+
 <style>
     #btnsContainer {
         display: flex;
@@ -43,6 +45,8 @@
         background: var(--highlighted-color);
     }
 </style>
+
+<!-- ----------------------- COMPONENT ----------------------- -->
 
 <div id="btnsContainer" class="container">
     <button id="btnPrev" class="paragraph">&lt;&lt; prev</button>
@@ -168,16 +172,13 @@
         btnActive = newBtnSelected;
     }    
 
+    /**
+     * 
+     */
     const changePage = ( btnPressed ) => {
-        const hero = document.getElementById('movieDetails');
-        const cardsContainer = document.getElementById('movieCardsContainer');
-
         page = btnPressed.textContent;
-        console.log(hero);
-        console.log(cardsContainer);
-
-        hero.innerHTML;
-        cardsContainer.innerHTML;
+        handleShowRandomHero();
+        reRenderCards();
     }
 
 </script>

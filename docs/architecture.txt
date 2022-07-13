@@ -1,14 +1,15 @@
 ==================================
 ARCHITECTURE
 ==================================
-|-> index
-    (Call to the API)
-    (Bootstrap)
-    (include.js)
-    (styles.css)
-    |-> app
-        |-> movie-card 
-            |-> movie-details
+TEMPLATES:
+-----------
+|-> app 
+|-> movieDetails
+|-> nextPrevBtn 
+
+COMPONENTS:
+-----------
+|-> movieCard
 
 ==================================
 NOTES
