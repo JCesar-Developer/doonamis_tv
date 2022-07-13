@@ -10,8 +10,3 @@ TEMPLATES:
 COMPONENTS:
 -----------
 |-> movieCard
-
-==================================
-NOTES
-==================================
-POSTER-PROPORTION: 500px x 748.1px
