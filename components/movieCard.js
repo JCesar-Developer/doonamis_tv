@@ -85,6 +85,7 @@ const reRenderCards = () => {
  */
 const handleShowMovieCards = async () => {
     const movieCardsContainer = document.querySelector('#movieCardsContainer');
+    changeURL(page);
 
     await fetch(`${api_url}`)
     .then((response) => response.json())

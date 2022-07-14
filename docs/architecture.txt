@@ -10,3 +10,10 @@ TEMPLATES:
 COMPONENTS:
 -----------
 |-> movieCard
+
+==================================
+NOTES
+==================================
+- For pre-render functions: Template - whit internal functions.  
+- For post-render functions: Template - whit external functions.
+- For an element with conditionals or iterators: JS Component - based in React.

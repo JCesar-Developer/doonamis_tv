@@ -25,6 +25,9 @@
         height: auto;
         filter: opacity(0);
     }
+    #hero-title {
+        font-size: 3.5em;
+    }
 </style>
 
 <!-- ----------------------- COMPONENT ----------------------- -->
@@ -32,8 +35,18 @@
 <div class="hero-container d-flex justify-content-end">
     <!-- HERO-DETAILS -->
     <div id="hero-details">
-        <h1 id="hero-title" class="title">Title</h1>
-        <h3 id="hero_overview" class="paragraph">Overview</h3>
+        <h1 id="hero-title" class="title mt-3 mb-0 pb-0">Title</h1>
+        <p id="hero-tagline" class="contrast-paragraph mt-0 pt-0">Tagline</p>
+        <div class="d-flex justify-content-start" style="height: 50px">
+            <h5 id="hero-status" class="mb-0 sub-title" style="align-self: flex-end;">status</h5>
+            <p id="hero-vote-avarage" class="mb-0 sub-title" style="align-self: flex-end;">vote_avarage</p> 
+            <p id="hero-vote-count" class="mb-0 contrast-paragraph" style="align-self: flex-end;">vote_count</p>
+        </div>
+        <div class="d-flex justify-content-start" style="height: 50px">
+            <h4 id="hero-number-of-seasons" class="mb-0 sub-title" style="align-self: flex-end;">number_of_seasons</h4>
+            <p id="hero-number-of-episodes" class="mb-0 contrast-paragraph" style="align-self: flex-end;">number_of_episodes</p>
+        </div>
+        <p id="hero_overview" class="paragraph mt-3">Overview</p>
     </div>
 
     <!-- HERO-IMG -->
@@ -44,3 +57,7 @@
         </div>
     </div>
 </div>
+
+<script>
+    handleShowRandomHero();
+</script>

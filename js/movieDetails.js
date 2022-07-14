@@ -51,8 +51,28 @@ const handleSetHeroImg = ( specificMovieData ) => {
  * @param requires the DATA from a specific movie 
  */
  const handleSetHeroDetails = ( specificMovieData ) => {
-    const hero_title    = document.querySelector('#movieDetails #hero-details h1');
+    console.log( specificMovieData );
+    const hero_title    = document.querySelector('#movieDetails #hero-details #hero-title');
+    const hero_tagline  = document.querySelector('#movieDetails #hero-details #hero-tagline');
+
+    const hero_status  = document.querySelector('#movieDetails #hero-details #hero-status');
+    const hero_voteAvarage  = document.querySelector('#movieDetails #hero-details #hero-vote-avarage');
+    const hero_voteCount = document.querySelector('#movieDetails #hero-details #hero-vote-count');
+
+    const hero_numberOfSeasons  = document.querySelector('#movieDetails #hero-details #hero-number-of-seasons');
+    const hero_numberOfEpisodes  = document.querySelector('#movieDetails #hero-details #hero-number-of-episodes');
+
+    const hero_overview = document.querySelector('#movieDetails #hero-details #hero_overview');
+
     hero_title.textContent = specificMovieData.name;
-    const hero_overview = document.querySelector('#movieDetails #hero-details h3');
+    hero_tagline.textContent = specificMovieData.tagline;
+
+    hero_status.textContent = `STATUS: ${specificMovieData.status} |\u00A0`;
+    hero_voteAvarage.textContent = `${specificMovieData.vote_average} |\u00A0`;
+    hero_voteCount.textContent = `Votes: ${specificMovieData.vote_count}.`;
+
+    hero_numberOfSeasons.textContent = `SEASONS: ${specificMovieData.number_of_seasons} |\u00A0`;
+    hero_numberOfEpisodes.textContent = `Episodes: ${specificMovieData.number_of_episodes}.`;
+
     hero_overview.textContent = specificMovieData.overview;
 }
