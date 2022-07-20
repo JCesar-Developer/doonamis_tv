@@ -51,28 +51,68 @@ const handleSetHeroImg = ( specificMovieData ) => {
  * @param requires the DATA from a specific movie 
  */
  const handleSetHeroDetails = ( specificMovieData ) => {
-    console.log( specificMovieData );
+
     const hero_title    = document.querySelector('#movieDetails #hero-details #hero-title');
     const hero_tagline  = document.querySelector('#movieDetails #hero-details #hero-tagline');
-
     const hero_status  = document.querySelector('#movieDetails #hero-details #hero-status');
-    const hero_voteAvarage  = document.querySelector('#movieDetails #hero-details #hero-vote-avarage');
     const hero_voteCount = document.querySelector('#movieDetails #hero-details #hero-vote-count');
-
     const hero_numberOfSeasons  = document.querySelector('#movieDetails #hero-details #hero-number-of-seasons');
     const hero_numberOfEpisodes  = document.querySelector('#movieDetails #hero-details #hero-number-of-episodes');
-
     const hero_overview = document.querySelector('#movieDetails #hero-details #hero_overview');
 
+    //TITLE & SUB-TITLE
     hero_title.textContent = specificMovieData.name;
     hero_tagline.textContent = specificMovieData.tagline;
 
+    //DETAILS: ROW_1
     hero_status.textContent = `STATUS: ${specificMovieData.status} |\u00A0`;
-    hero_voteAvarage.textContent = `${specificMovieData.vote_average} |\u00A0`;
-    hero_voteCount.textContent = `Votes: ${specificMovieData.vote_count}.`;
+    getRating( specificMovieData );
+    hero_voteCount.textContent = `\u00A0|\u00A0 ${specificMovieData.vote_count} votes.`;
 
+    //DETAILS: ROW_2
     hero_numberOfSeasons.textContent = `SEASONS: ${specificMovieData.number_of_seasons} |\u00A0`;
     hero_numberOfEpisodes.textContent = `Episodes: ${specificMovieData.number_of_episodes}.`;
 
+    //OVERVIEW
     hero_overview.textContent = specificMovieData.overview;
+
+    //RE-SIZE IF IS NECESARY
+    resizeTitle();
+    resizeOverview();
+    
+}
+ 
+/**
+ * 
+ * @param {*} specificMovieData 
+ */
+const getRating = ( specificMovieData ) => {
+    const starsTotal = 10;
+    const voteAvarage = specificMovieData.vote_average;
+    const starPercentage = voteAvarage / starsTotal * 100;
+    const starPercentageRounded = `${Math.round(starPercentage / 10) * 10}%`;
+    document.querySelector('#stars-inner').style.width = starPercentageRounded;
+
+}
+
+const resizeTitle = () => {
+    const heroContainer = document.querySelector('.hero-container');
+    const heroTitle = document.querySelector('#hero-title');
+
+    if (heroTitle.offsetHeight > (heroContainer.offsetHeight * 25 / 100) ) {
+        heroTitle.style.fontSize = '2.4em';
+    } else {
+        heroTitle.style.fontSize = '3.4em';
+    }
+}
+
+const resizeOverview = () => {
+    const heroContainer = document.querySelector('.hero-container');
+    const heroOverview = document.querySelector('#hero_overview');
+
+    if (heroOverview.offsetHeight > (heroContainer.offsetHeight * 35 / 100) ) {
+        heroOverview.style.fontSize = "80%";
+    } else {
+        heroOverview.style.fontSize = '100%';
+    }
 }

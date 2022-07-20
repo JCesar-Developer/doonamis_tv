@@ -4,6 +4,9 @@
     #appComponent {
         color: var(--main-font-color);
     }
+    #movieDetails {
+        margin-bottom: -100px;
+    }
     #category {
         margin-left: 2.5%;
         margin-bottom: 25px;
@@ -15,6 +18,10 @@
     #nextPrevBtn {
         padding-bottom: 35px;
     }
+    .tarjetita {
+        width: 300px;
+        height: 450px;
+    }
 </style>
 
 <!-- ----------------------- COMPONENT ----------------------- -->
@@ -23,9 +30,73 @@
 
     <div id="movieDetails" w3-include-html="./templates/movieDetails.html"></div>
     
-    <h1 id="category" class="sub-title">MOST POPULAR SERIES</h1>
+    <h2 id="category" class="sub-title">MOST POPULAR SERIES</h2>
     <div id="main-container">
         <!-- THIS ELEMENT CONTAINS THE MOVIE-CARD COMPONENTS -->
+        <div class="movie-cards-slider" style="border: solid 2px red;">
+            <div class="tarjetita" style="border: solid 2px blue;">
+                Tarjetita 1
+            </div>
+            <div class="tarjetita" style="border: solid 2px blue;">
+                Tarjetita 2
+            </div>
+            <div class="tarjetita" style="border: solid 2px blue;">
+                Tarjetita 3
+            </div>
+            <div class="tarjetita" style="border: solid 2px blue;">
+                Tarjetita 4
+            </div>
+            <div class="tarjetita" style="border: solid 2px blue;">
+                Tarjetita 5
+            </div>
+            <div class="tarjetita" style="border: solid 2px blue;">
+                Tarjetita 6
+            </div>
+            <div class="tarjetita" style="border: solid 2px blue;">
+                Tarjetita 7
+            </div>
+            <div class="tarjetita" style="border: solid 2px blue;">
+                Tarjetita 8
+            </div>
+            <div class="tarjetita" style="border: solid 2px blue;">
+                Tarjetita 9
+            </div>
+            <div class="tarjetita" style="border: solid 2px blue;">
+                Tarjetita 10
+            </div>
+        </div>
+        <div class="movie-cards-slider" style="border: solid 2px red;">
+            <div class="tarjetita" style="border: solid 2px blue;">
+                Tarjetita 11
+            </div>
+            <div class="tarjetita" style="border: solid 2px blue;">
+                Tarjetita 12
+            </div>
+            <div class="tarjetita" style="border: solid 2px blue;">
+                Tarjetita 13
+            </div>
+            <div class="tarjetita" style="border: solid 2px blue;">
+                Tarjetita 14
+            </div>
+            <div class="tarjetita" style="border: solid 2px blue;">
+                Tarjetita 15
+            </div>
+            <div class="tarjetita" style="border: solid 2px blue;">
+                Tarjetita 16
+            </div>
+            <div class="tarjetita" style="border: solid 2px blue;">
+                Tarjetita 17
+            </div>
+            <div class="tarjetita" style="border: solid 2px blue;">
+                Tarjetita 18
+            </div>
+            <div class="tarjetita" style="border: solid 2px blue;">
+                Tarjetita 19
+            </div>
+            <div class="tarjetita" style="border: solid 2px blue;">
+                Tarjetita 20
+            </div>
+        </div>
         <div id="movieCardsContainer" class="row"></div>
     </div>
 
@@ -35,6 +106,7 @@
 
 <script>
     includeHTML();
+    renderSlider();
     handleShowMovieCards();
 </script>
 

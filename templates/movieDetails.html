@@ -28,18 +28,46 @@
     #hero-title {
         font-size: 3.5em;
     }
+    #stars-outer {
+        position: relative;
+        display: inline-block;
+    }
+    #stars-inner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 0;
+    }
+    #stars-outer::before {
+        content: "\f005 \f005 \f005 \f005 \f005" ;
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        color: var(--soft-font-color);
+    }
+    #stars-inner::before {
+        content: "\f005 \f005 \f005 \f005 \f005" ;
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        color: var(--highlighted-color);
+    }
 </style>
 
 <!-- ----------------------- COMPONENT ----------------------- -->
 
-<div class="hero-container d-flex justify-content-end">
+<div class="hero-container d-flex justify-content-end" style="overflow: hidden;">
     <!-- HERO-DETAILS -->
     <div id="hero-details">
         <h1 id="hero-title" class="title mt-3 mb-0 pb-0">Title</h1>
         <p id="hero-tagline" class="contrast-paragraph mt-0 pt-0">Tagline</p>
         <div class="d-flex justify-content-start" style="height: 50px">
             <h5 id="hero-status" class="mb-0 sub-title" style="align-self: flex-end;">status</h5>
-            <p id="hero-vote-avarage" class="mb-0 sub-title" style="align-self: flex-end;">vote_avarage</p> 
+            <div id="hero-vote-avarage" style="align-self: flex-end;">
+                <div id="stars-outer">
+                    <div id="stars-inner"></div>
+                </div>
+            </div> 
             <p id="hero-vote-count" class="mb-0 contrast-paragraph" style="align-self: flex-end;">vote_count</p>
         </div>
         <div class="d-flex justify-content-start" style="height: 50px">

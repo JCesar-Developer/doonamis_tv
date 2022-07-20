@@ -2,7 +2,6 @@
 PENDIENTES PARA v1.5
 ==================================
 FUNCIONALES:
-- Agregar todos los detalles de la película seleccionada en el HERO.
 - Solucionar imagen alternativa cuando no hay foto de portada. 
 - Crear dos lineas de carrucel con las MOVIE-CARD components.
 
