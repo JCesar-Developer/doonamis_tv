@@ -1,0 +1,79 @@
+/*  ROOT
+    min-width: Todo lo que esté por arriba de.
+    max-width: Todo lo que esté por debajo de.
+    - MY SCREAN RESOLUTION:  1920px
+
+    - DESKTOP SCREEN:   > 1280px
+    - TABLET SCREEN H:  1024px
+    - TABLET SCREEN V:  768px 
+    - PHONE SCREEN H:   480px
+    - PHONE SCREEN V:   320px
+
+    #hero-title
+    #hero-tagline
+    #hero_overview
+*/
+
+/* --- DESKTOP --- */
+@media screen and (min-width: 1921px) {
+    #movieDetails, #hero-row1, #hero-row2 {
+        border: solid 5px darkred;
+        font-size: 100%;
+
+    }
+}
+@media screen and (max-width: 1920px) {
+    #movieDetails, #hero-row1 h4, #hero-row2 h4 {
+        border: solid 5px red;
+        font-size: 90%;
+    }
+}
+@media screen and (max-width: 1720px) {
+    #movieDetails, #hero-row1 h4, #hero-row2 h4 {
+        border: solid 5px darkorange;
+        font-size: 80%;
+    }
+    #hero-details {
+        width: 50% !important;
+    }
+}
+@media screen and (max-width: 1500px) {
+    #movieDetails, #hero-row1 h4, #hero-row2 h4 {
+        border: solid 5px yellow;
+        font-size: 70%;
+    }
+    #hero-details {
+        width: 55% !important;
+    }
+}
+@media screen and (max-width: 1280px) {
+    #movieDetails, #hero-row1 h4, #hero-row2 h4 {
+        border: solid 5px yellowgreen;
+        font-size: 60%;
+    }
+    #hero-details {
+        width: 60% !important;
+    }
+}
+/* --- TABLET --- */
+@media screen and (max-width: 1024px) {
+    #movieDetails {
+        border: solid 5px darkblue;
+    }
+}
+@media screen and (max-width: 768px) {
+    #movieDetails {
+        border: solid 5px blue;
+    }
+}
+/* --- PHONE --- */
+@media screen and (max-width: 480px) {
+    #movieDetails {
+        border: solid 5px red;
+    }
+}
+@media screen and (max-width: 320px) {
+    #movieDetails {
+        border: solid 5px darkred;
+    }
+}

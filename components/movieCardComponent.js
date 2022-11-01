@@ -26,17 +26,20 @@ class movieCard extends HTMLElement {
     connectedCallback(){
         this.innerHTML = `  
         <style>
+        .a-elem {
+            text-decoration: none;
+        }
         .card-container {
-            border: solid 7px var(--main-bg-contrast);
-            min-width: 250px;
-            max-width: 300px;
-            width: auto;
-            margin-bottom: 40px;
+            border: solid 8px var(--main-bg-contrast);
+            width: 300px;
+            height: 540px;
+            margin-bottom: 30px;
+            background-color: white;
             cursor: pointer;
         }
             .card-container:hover {
                 transform: scale(1.075);
-                transition: .4s ease all;
+                transition: .3s ease all;
             }
         .card-img {
             border: solid 4px var(--darkhighlighted-color);
@@ -56,59 +59,17 @@ class movieCard extends HTMLElement {
         }
         </style>
         
-        <a href="#appComponent">
+        <a class="a-elem" href="#appComponent">
             <div class="card-container">
                 <img class="card-img" 
                     src="${api_img + this.poster_img_path}"
                     alt="${api_img + this.name}">
-                <h2 class="card-title super-title">${this.name}</h2>
+                <h5 class="card-title super-title">${this.name}</h5>
             </div>
         </a>`;
 
     }
     
-}
-
-/**
- * Destroy and re-render the content of movie cards.
- */
-const reRenderCards = () => {
-    const movieCardsContainer = document.querySelector('#movieCardsContainer');
-    movieCardsContainer.innerHTML = '';
-    handleShowMovieCards();
-}
-
-/**
- * Fetch the DATA from the URL of a specific page from the API (TMDB) 
- * to get the data of all the movies stored on that page. 
- * Finally creates a MOVIE-CARD component for each film obtained.
- */
-const handleShowMovieCards = async () => {
-    const movieCardsContainer = document.querySelector('#movieCardsContainer');
-    changeURL(page);
-
-    await fetch(`${api_url}`)
-    .then((response) => response.json())
-    .then((apiResult) => {
-        const movies = apiResult.results;
-        movies.forEach((movie) => {         
-
-            const movieID = movie.id;
-            const newMovieCard = document.createElement("movie-card");
-            
-            newMovieCard.setAttribute('id', movieID);
-            newMovieCard.setAttribute('class', 'movieCard col');
-            newMovieCard.setAttribute('style', 'padding-left: 10px; padding-right: 10px;')
-            newMovieCard.setAttribute('name', movie.name);
-            newMovieCard.setAttribute('img_path', movie.backdrop_path);
-            newMovieCard.setAttribute('poster_img_path', movie.poster_path);
-
-            newMovieCard.setAttribute('onclick', `handleShowDetailsOfSelectedMovie(${movieID})`);
-
-            movieCardsContainer.appendChild(newMovieCard);
-
-        });
-    })
 }
 
 /**

@@ -53,17 +53,26 @@
         <div id="btn1" class="btn-number"><button id="btn-1" class="paragraph btn-active">1</button></div>
         <div id="btn2" class="btn-number"><button id="btn-2" class="paragraph">2</button></div>
         <div id="btn3" class="btn-number"><button id="btn-3" class="paragraph">3</button></div>
+        <div id="btn4" class="btn-number"><button id="btn-4" class="paragraph">4</button></div>
+        <div id="btn5" class="btn-number"><button id="btn-5" class="paragraph">5</button></div>
     <button id="btnNext" class="paragraph">next &gt;&gt;</button>
 </div>
 
 <script>
+    const firstPage = 1;
+    const lastPage = 2000;
+
     let x = 1;
-    let y = 2;
-    let z = 3;
+    let a = 2;
+    let y = 3;
+    let b = 4;
+    let z = 5;
     let prev = document.getElementById('btnPrev');
     let btn1 = document.getElementById('btn1');
     let btn2 = document.getElementById('btn2');
     let btn3 = document.getElementById('btn3');
+    let btn4 = document.getElementById('btn4');
+    let btn5 = document.getElementById('btn5');
     let next = document.getElementById('btnNext');
     let btnActive = document.getElementsByClassName('btn-active')[0];
 
@@ -72,30 +81,38 @@
      */
     const handleChangeBtnNumbers = () => {
         btn1.innerHTML = (`<button id="btn-${x}" class="paragraph">${x}</button>`);
-        btn2.innerHTML = (`<button id="btn-${y}" class="paragraph">${y}</button>`);
-        btn3.innerHTML = (`<button id="btn-${z}" class="paragraph">${z}</button>`);
+        btn2.innerHTML = (`<button id="btn-${a}" class="paragraph">${a}</button>`);
+        btn3.innerHTML = (`<button id="btn-${y}" class="paragraph">${y}</button>`);
+        btn4.innerHTML = (`<button id="btn-${b}" class="paragraph">${b}</button>`);
+        btn5.innerHTML = (`<button id="btn-${z}" class="paragraph">${z}</button>`);
     }
 
     /**
      * 
      */
-    next.addEventListener('click', () => {
-        x++;
-        y++;
-        z++;
-        handleChangeBtnNumbers();
+     prev.addEventListener('click', () => {
+        if( x > firstPage ) {
+            x--;
+            a--;
+            y--;
+            b--;
+            z--;
+            handleChangeBtnNumbers();
+        }
         printBtnActive(btnActive);
-    })
+    }) 
 
     /**
      * 
      */
      btn1.addEventListener('click', () => {
-        const btnToPrint = onSaveBtnToPrint(btn1.firstChild);
-        if( x > 1 && z < 1000) {
-            x--;
-            y--;
-            z--;
+        const btnToPrint = btn1.firstChild;
+        if( x > firstPage + 1 ) {
+            x = x - 2;
+            a = a - 2;
+            y = y - 2;
+            b = b - 2;
+            z = z - 2;
             handleChangeBtnNumbers();
         }
         printBtnSelected(btnToPrint);
@@ -106,33 +123,75 @@
      * 
      */
      btn2.addEventListener('click', () => {
-        const btnToPrint = onSaveBtnToPrint(btn2.firstChild);
-        handleChangeBtnNumbers();
-        printBtnSelected(btnToPrint);
-        changePage(btnToPrint);
-    })
-
-    /**
-     * 
-     */
-    btn3.addEventListener('click', () => {
-        const btnToPrint = onSaveBtnToPrint(btn3.firstChild);
-        x++;
-        y++;
-        z++;
-        handleChangeBtnNumbers();
-        printBtnSelected(btnToPrint);
-        changePage(btnToPrint);
-    })
-
-    /**
-     * 
-     */
-    prev.addEventListener('click', () => {
-        if( x > 1 && z < 1000) {
+        const btnToPrint = btn2.firstChild;
+        if( a > firstPage + 1 ) {
             x--;
+            a--;
             y--;
+            b--;
             z--;
+            handleChangeBtnNumbers();
+        }
+        printBtnSelected(btnToPrint);
+        changePage(btnToPrint);
+    })
+
+    /**
+     * 
+     */
+     btn3.addEventListener('click', () => {
+        const btnToPrint = btn3.firstChild;
+        handleChangeBtnNumbers();
+        printBtnSelected(btnToPrint);
+        changePage(btnToPrint);
+    })
+
+        /**
+     * 
+     */
+     btn4.addEventListener('click', () => {
+        const btnToPrint = btn4.firstChild;
+        if( b < lastPage - 1 ) {
+            x++;
+            a++;
+            y++;
+            b++;
+            z++;
+            handleChangeBtnNumbers();
+        }
+        printBtnSelected(btnToPrint);
+        changePage(btnToPrint);
+    })
+
+
+    /**
+     * 
+     */
+    btn5.addEventListener('click', () => {
+        const btnToPrint = btn5.firstChild;
+        if( z < lastPage - 1 ) {
+            x = x + 2;
+            a = a + 2;
+            y = y + 2;
+            b = b + 2;
+            z = z + 2;
+        }
+        handleChangeBtnNumbers();
+        printBtnSelected(btnToPrint);
+        changePage(btnToPrint);
+    })
+
+    /**
+     * 
+     */
+     next.addEventListener('click', () => {
+        //TODO: CAMBIAR POR 999.
+        if( z < lastPage ) {
+            x++;
+            a++;
+            y++;
+            b++;
+            z++;
             handleChangeBtnNumbers();
         }
         printBtnActive(btnActive);
@@ -141,22 +200,18 @@
     /**
      * 
      */
-    const onSaveBtnToPrint = (btnSelected) => {
-        const btnToPrint = document.getElementById(btnSelected.id);
-        return btnToPrint;
-    }    
-
-    /**
-     * 
-     */
     const printBtnActive = (btnActive) => {
         const btnActiveId = btnActive.id;
         if( btnActiveId == 'btn-' + x ) 
             printBtnSelected(btn1.children[0]);  
-        if( btnActiveId == 'btn-' + y ) 
+        if( btnActiveId == 'btn-' + a ) 
             printBtnSelected(btn2.children[0]);  
+        if( btnActiveId == 'btn-' + y ) 
+            printBtnSelected(btn3.children[0]);  
+        if( btnActiveId == 'btn-' + b ) 
+            printBtnSelected(btn4.children[0]);  
         if( btnActiveId == 'btn-' + z ) 
-            printBtnSelected(btn3.children[0]);
+            printBtnSelected(btn5.children[0]);
     }    
 
     /**
@@ -171,14 +226,5 @@
         newBtnSelected.classList.add('btn-active');
         btnActive = newBtnSelected;
     }    
-
-    /**
-     * 
-     */
-    const changePage = ( btnPressed ) => {
-        page = btnPressed.textContent;
-        handleShowRandomHero();
-        reRenderCards();
-    }
 
 </script>

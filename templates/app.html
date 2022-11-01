@@ -22,91 +22,32 @@
         width: 300px;
         height: 450px;
     }
+    .tns-ovh {
+        border: solid 8px var(--soft-bg-color);
+    }
+    .tns-inner {
+        background-color: var(--secondari-bg-color);
+    }
 </style>
 
 <!-- ----------------------- COMPONENT ----------------------- -->
 
 <div id="appComponent">
 
-    <div id="movieDetails" w3-include-html="./templates/movieDetails.html"></div>
+    <div id="movieDetails" w3-include-html="./templates/widgets/heroDetails.html"></div>
     
     <h2 id="category" class="sub-title">MOST POPULAR SERIES</h2>
     <div id="main-container">
         <!-- THIS ELEMENT CONTAINS THE MOVIE-CARD COMPONENTS -->
-        <div class="movie-cards-slider" style="border: solid 2px red;">
-            <div class="tarjetita" style="border: solid 2px blue;">
-                Tarjetita 1
-            </div>
-            <div class="tarjetita" style="border: solid 2px blue;">
-                Tarjetita 2
-            </div>
-            <div class="tarjetita" style="border: solid 2px blue;">
-                Tarjetita 3
-            </div>
-            <div class="tarjetita" style="border: solid 2px blue;">
-                Tarjetita 4
-            </div>
-            <div class="tarjetita" style="border: solid 2px blue;">
-                Tarjetita 5
-            </div>
-            <div class="tarjetita" style="border: solid 2px blue;">
-                Tarjetita 6
-            </div>
-            <div class="tarjetita" style="border: solid 2px blue;">
-                Tarjetita 7
-            </div>
-            <div class="tarjetita" style="border: solid 2px blue;">
-                Tarjetita 8
-            </div>
-            <div class="tarjetita" style="border: solid 2px blue;">
-                Tarjetita 9
-            </div>
-            <div class="tarjetita" style="border: solid 2px blue;">
-                Tarjetita 10
-            </div>
-        </div>
-        <div class="movie-cards-slider" style="border: solid 2px red;">
-            <div class="tarjetita" style="border: solid 2px blue;">
-                Tarjetita 11
-            </div>
-            <div class="tarjetita" style="border: solid 2px blue;">
-                Tarjetita 12
-            </div>
-            <div class="tarjetita" style="border: solid 2px blue;">
-                Tarjetita 13
-            </div>
-            <div class="tarjetita" style="border: solid 2px blue;">
-                Tarjetita 14
-            </div>
-            <div class="tarjetita" style="border: solid 2px blue;">
-                Tarjetita 15
-            </div>
-            <div class="tarjetita" style="border: solid 2px blue;">
-                Tarjetita 16
-            </div>
-            <div class="tarjetita" style="border: solid 2px blue;">
-                Tarjetita 17
-            </div>
-            <div class="tarjetita" style="border: solid 2px blue;">
-                Tarjetita 18
-            </div>
-            <div class="tarjetita" style="border: solid 2px blue;">
-                Tarjetita 19
-            </div>
-            <div class="tarjetita" style="border: solid 2px blue;">
-                Tarjetita 20
-            </div>
-        </div>
-        <div id="movieCardsContainer" class="row"></div>
+        <slider-component id="0" first="0" last="9"></slider-component>
+        <slider-component id="1" first="10" last="19"></slider-component>
     </div>
 
-    <div id="nextPrevBtn" w3-include-html="./templates/nextPrevBtn.html"></div>
+    <div id="nextPrevBtn" class="mt-3" w3-include-html="./templates/widgets/nextPrevBtn.html"></div>
 
 </div>
 
 <script>
     includeHTML();
-    renderSlider();
-    handleShowMovieCards();
 </script>
 
